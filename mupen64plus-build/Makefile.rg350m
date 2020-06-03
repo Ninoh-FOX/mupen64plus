@@ -43,7 +43,7 @@ export CROSS_COMPILE CC CFLAGS OPTFLAGS UNAME HOST_CPU OSD NO_OSS NO_SRC NO_SPEE
 MAKE_OPTS := PKG_CONFIG="$(PKG_CONFIG)" SDL_CONFIG="$(SDL_CONFIG)" USE_GLES=1
 
 DATE := $(shell date -u +"%Y-%m-%d %H:%M:%S UTC")
-VIDEO := 320x240
+VIDEO := 640x480
 
 .PHONY: clean all opk core input audio ui out/default.gcw0.desktop input-sdl audio-sdl rsp-hle mupen64plus video-gles2n64
 opk:   mupen64plus.opk
@@ -84,7 +84,7 @@ rsp-hle input-sdl audio-sdl: out
 out:
 	cp -r ../mupen64plus-core/data $@
 	cp ../mupen64plus-video-gles2n64/gles2n64.conf $@/gles2n64.conf
-	cp ../mupen64plus-input-sdl/data/InputAutoCfg.ini $@/InputAutoCfg.ini
+	cp ../mupen64plus-input-sdl/data_rg/InputAutoCfg.ini $@/InputAutoCfg.ini
 
 clean:
 	make -C ../mupen64plus-core/projects/unix $(MAKE_OPTS) clean

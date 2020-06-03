@@ -43,6 +43,7 @@ export CROSS_COMPILE CC CFLAGS OPTFLAGS UNAME HOST_CPU OSD NO_OSS NO_SRC NO_SPEE
 MAKE_OPTS := PKG_CONFIG="$(PKG_CONFIG)" SDL_CONFIG="$(SDL_CONFIG)" USE_GLES=1
 
 DATE := $(shell date -u +"%Y-%m-%d %H:%M:%S UTC")
+VIDEO := 320x240
 
 .PHONY: clean all opk core input audio ui out/default.gcw0.desktop input-sdl audio-sdl rsp-hle mupen64plus video-gles2n64
 opk:   mupen64plus.opk
@@ -61,6 +62,7 @@ out/mupen.png: mupen.png out
 
 out/default.gcw0.desktop: default.gcw0.desktop out
 	sed "s/DATE/$(DATE)/g" $< > $@
+	sed "s/VIDEO/$(VIDEO)/g" $< > $@
 
 core: out
 	+make -C ../mupen64plus-core/projects/unix $(MAKE_OPTS) all
